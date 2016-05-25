@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-2" ng-class="vm.setClass($index)"
+    ng-repeat="item in vm.details" ng-click="vm.changeForecastDaySelection({day:$index})">
+      <div class="row forecast-entry" >
+         {{item.day}}
+      </div>
+      <div class="row forecast-image" >
+        <img width="50" ng-src="images/{{item.imageName}}" />
+      </div>
+      <div class="row forecast-entry" >
+        {{item.temperatureRange}}
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.details-entry {
+  color:grey;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.bigger-text {
+  font-size:34px;
+}
+
+.indent-right {
+  margin-left:20px;
+}

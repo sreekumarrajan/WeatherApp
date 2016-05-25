@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1 nopadding">
+      <img width="75" ng-src="images/{{details.imageName}}" />
+    </div>
+    <div class="col-md-1 indent-right">
+      <div class="spacer">
+
+      </div>
+      <label class="bigger-text">{{details.temperature}}</label>
+    </div>
+    <div class="col-md-1 nopadding">
+      <div class="spacer">
+
+      </div>
+       <a href="" ng-click="unitSelectionChanged({newunit:'metric'})">
+         <label>°C</label>
+       </a> |
+       <a href="" ng-click="unitSelectionChanged({newunit:'imperial'})">
+         <label>°F</label>
+       </a>
+    </div>
+    <div class="col-md-3 col-md-offset-5 details-entry">
+      <label>Precipitation: </label>
+      <label>{{details.precipitation}}</label>
+      <br />
+      <label>Humidity: </label>
+      <label>{{details.humidity}}</label>
+      <br />
+      <label>Wind: </label>
+      <label>{{details.wind}}</label>
+      <br />
+    </div>
+  </div>
+</div>

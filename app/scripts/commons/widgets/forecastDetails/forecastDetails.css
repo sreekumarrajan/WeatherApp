@@ -1,0 +1,19 @@
+.forecast-entry {
+  font-size:12px;
+  color:grey;
+  text-align:center;
+}
+
+.forecast-image {
+  text-align:center;
+}
+
+.selected-forecast {
+  background-color:silver;
+  border-radius:10px;
+}
+
+.forecast-box:hover{
+  background-color:aliceblue;
+  border-radius:10px;
+}

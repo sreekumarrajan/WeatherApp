@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <search selected-city="home.selectedCity" on-search="home.search(newcity)"></search>
+  <div class="spacer"></div>
+  <general-description weather-data="home.generalDescription"></general-description>
+  <div class="spacer"></div>
+  <weather-details details="home.weatherDetails" unit-selection-changed="home.unitSelectionChanged(newunit)"></weather-details>
+  <div class="spacer"></div>
+  <forecast-details details = "home.forecastDetails" change-forecast-day-selection="home.forecastDaySelectionChanged(day)"
+    get-forecast-day-index="home.getForecastDayIndex()"
+  ></forecast-details>
+</div>
