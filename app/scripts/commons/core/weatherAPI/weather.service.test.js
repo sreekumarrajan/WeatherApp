@@ -1280,10 +1280,14 @@
             forecastWeatherData = result;
           });
 
-          var setCurrentWeatherData = jasmine.createSpy('getWeatherDetails').and.callFake(function(result) {
+          var setCurrentWeatherData = jasmine.createSpy('setCurrentWeatherData').and.callFake(function(result) {
             //a fake implementation
             currentWeatherData = result;
           });
+
+          var getCurrentWeatherData = jasmine.createSpy('getCurrentWeatherData').and.callFake(function(){
+            return currentWeatherData;
+          })
 
 
           return {
@@ -1291,6 +1295,7 @@
             getSelectedUnit: getSelectedUnit,
             setForecastWeatherData: setForecastWeatherData,
             setCurrentWeatherData: setCurrentWeatherData,
+            getCurrentWeatherData: getCurrentWeatherData,
             currentWeatherData:currentWeatherData,
             forecastWeatherData:forecastWeatherData
           };
@@ -1329,14 +1334,18 @@
 
     }));
 
+    afterEach(function() {
+     httpMock.verifyNoOutstandingExpectation();
+     httpMock.verifyNoOutstandingRequest();
+   });
+
     it('should get the currentweatherdata', function() {
-      console.log('Baseurl.currentweatherdata ', baseUrl.currentWeatherRoot);
       weatherService.getCurrentWeatherData('London');
       httpMock.flush();
 
-      var data = weatherDataService.currentWeatherData;
-
-      expect(data).toBeDefined();
+      var result = weatherDataService.getCurrentWeatherData();
+      expect(result.data).toBeDefined();
+      expect(result.data).toEqual(currentWeatherData);
     });
 
   });
