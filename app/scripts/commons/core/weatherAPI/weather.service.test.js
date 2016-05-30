@@ -1287,13 +1287,18 @@
 
           var getCurrentWeatherData = jasmine.createSpy('getCurrentWeatherData').and.callFake(function(){
             return currentWeatherData;
-          })
+          });
+
+          var getForecastWeatherData = jasmine.createSpy('getForecastWeatherData').and.callFake(function(){
+            return forecastWeatherData;
+          });
 
 
           return {
             setSelectedCity: setSelectedCity,
             getSelectedUnit: getSelectedUnit,
             setForecastWeatherData: setForecastWeatherData,
+            getForecastWeatherData: getForecastWeatherData,
             setCurrentWeatherData: setCurrentWeatherData,
             getCurrentWeatherData: getCurrentWeatherData,
             currentWeatherData:currentWeatherData,
@@ -1332,6 +1337,11 @@
         'data': currentWeatherData
       });
 
+      httpMock.when('GET',
+        "http://api.openweathermap.org/data/2.5/forecast?APPID=8caa3a62ba1f3b52d931888f38d1bc75&mode=json&q=London&type=like&units=metric").respond({
+        'data': forecastWeatherData
+      });
+
     }));
 
     afterEach(function() {
@@ -1346,6 +1356,15 @@
       var result = weatherDataService.getCurrentWeatherData();
       expect(result.data).toBeDefined();
       expect(result.data).toEqual(currentWeatherData);
+    });
+
+    it('should get the forecastweatherdata', function() {
+      weatherService.getForecastWeatherData('London');
+      httpMock.flush();
+
+      var result = weatherDataService.getForecastWeatherData();
+      expect(result.data).toBeDefined();
+      expect(result.data).toEqual(forecastWeatherData);
     });
 
   });
